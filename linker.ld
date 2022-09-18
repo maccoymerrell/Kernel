@@ -14,16 +14,22 @@ SECTIONS
     *(.rodata)
 
   }
+  .ctors : ALIGN(16)
+  {
+    start_ctors = .;
+    *(.ctors*)
+    end_ctors = .;
+  }
+  .dtors : ALIGN(16)
+  {
+    start_dtors = .;
+    *(.dtors*)
+    end_dtors = .;
+  }
   .data : AT(phys + (data - code))
   {
     data = .;
     *(.data)
-    start_ctors = .;
-    *(.ctor*)
-    end_ctors = .;
-    start_dtors = .;
-    *(.dtor*)
-    end_dtors = .;
     *(.gnu.linkonce.d.*)
     . = ALIGN(4096);
   }

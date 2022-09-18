@@ -31,6 +31,7 @@ int main()
   /* -- INITIALIZE CONSOLE */
   //*((int*)0xb8000)=0x07690748;
   Console::init(); 
+  Console::cls();
   Console::puts("Initialized console.\n");
   Console::puts("\n");
 

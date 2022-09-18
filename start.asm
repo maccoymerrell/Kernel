@@ -5,11 +5,11 @@
 [BITS 64]
 global start
 start:
-    mov esp, _sys_stack     ; Points stack pointer to our new stack area
+    mov rsp, _sys_stack     ; Points stack pointer to our new stack area
     jmp stublet
 
 ; This part MUST be 4-byte aligned, so we solve that issue using 'ALIGN 4'
-ALIGN 8
+ALIGN 4
 ; Start of the multiboot header
 mboot:
     ; Multiboot macros to make a few lines later more readable
@@ -50,7 +50,7 @@ mboot:
 		; to start running the OS
     
 
-
+[BITS 64]
 stublet:
 ; Initilization of static global objects. This goes through each object 
 ; in the ctors section of the object file, where the global constructors 

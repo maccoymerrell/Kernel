@@ -2,7 +2,7 @@ AS=nasm
 GCC=gcc
 LD=ld
 
-GCC_OPTIONS = -m64 -nostdlib -fno-builtin -nostartfiles -nodefaultlibs -fno-exceptions -fno-rtti -fno-stack-protector -fleading-underscore -fno-pie -fno-asynchronous-unwind-tables -z max-page-size=0x1000
+GCC_OPTIONS = -m64 -nostdlib -fno-builtin -nostartfiles -nodefaultlibs -fno-exceptions -fno-rtti -fno-stack-protector -fleading-underscore -fno-pie -fno-asynchronous-unwind-tables
 
 all: kernel.bin
 
@@ -31,5 +31,5 @@ kernel.o: kernel.C
 
 
 kernel.bin: start.o kernel.o console.o utils.o linker.ld
-	$(LD) -melf_x86_64 -z max-page-size=0x1000 -T linker.ld -o  kernel.bin start.o kernel.o console.o utils.o
+	$(LD) -melf_x86_64 -T linker.ld -o  kernel.bin start.o kernel.o console.o utils.o
 
